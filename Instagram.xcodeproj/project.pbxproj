@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -18,6 +18,7 @@
 		82866A0E2694A47900C28F9F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 82866A0D2694A47900C28F9F /* main.m */; };
 		82866A182694A47900C28F9F /* InstagramTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 82866A172694A47900C28F9F /* InstagramTests.m */; };
 		82866A232694A47900C28F9F /* InstagramUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 82866A222694A47900C28F9F /* InstagramUITests.m */; };
+		82866A33269548FF00C28F9F /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82866A32269548FF00C28F9F /* LoginViewController.m */; };
 		CB7BC5C54E5B4D9D93919241 /* Pods_Instagram_InstagramUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A09507ABE0DC5D5B0E4DCCFD /* Pods_Instagram_InstagramUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +62,8 @@
 		82866A1E2694A47900C28F9F /* InstagramUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InstagramUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		82866A222694A47900C28F9F /* InstagramUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InstagramUITests.m; sourceTree = "<group>"; };
 		82866A242694A47900C28F9F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		82866A31269548FF00C28F9F /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		82866A32269548FF00C28F9F /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		8BFAD85B548769B05FD10813 /* Pods-Instagram.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Instagram.release.xcconfig"; path = "Target Support Files/Pods-Instagram/Pods-Instagram.release.xcconfig"; sourceTree = "<group>"; };
 		9F3AE78BBDC3421B876A255B /* Pods-Instagram-InstagramUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Instagram-InstagramUITests.release.xcconfig"; path = "Target Support Files/Pods-Instagram-InstagramUITests/Pods-Instagram-InstagramUITests.release.xcconfig"; sourceTree = "<group>"; };
 		A09507ABE0DC5D5B0E4DCCFD /* Pods_Instagram_InstagramUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Instagram_InstagramUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -121,6 +124,7 @@
 		828669FA2694A47800C28F9F /* Instagram */ = {
 			isa = PBXGroup;
 			children = (
+				82866A30269548EB00C28F9F /* ViewControllers */,
 				828669FB2694A47800C28F9F /* AppDelegate.h */,
 				828669FC2694A47800C28F9F /* AppDelegate.m */,
 				828669FE2694A47800C28F9F /* SceneDelegate.h */,
@@ -154,6 +158,15 @@
 			path = InstagramUITests;
 			sourceTree = "<group>";
 		};
+		82866A30269548EB00C28F9F /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				82866A31269548FF00C28F9F /* LoginViewController.h */,
+				82866A32269548FF00C28F9F /* LoginViewController.m */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
 		9BC24EF01E209373D03FF349 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -174,7 +187,6 @@
 				D8FBF8E4C6546C2FE85A500D /* Pods-InstagramTests.debug.xcconfig */,
 				596D2CD949C25B304B39A8A1 /* Pods-InstagramTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -419,6 +431,7 @@
 				828669FD2694A47800C28F9F /* AppDelegate.m in Sources */,
 				82866A0E2694A47900C28F9F /* main.m in Sources */,
 				82866A002694A47800C28F9F /* SceneDelegate.m in Sources */,
+				82866A33269548FF00C28F9F /* LoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

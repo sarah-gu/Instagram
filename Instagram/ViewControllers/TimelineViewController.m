@@ -14,6 +14,7 @@
 #import <UIKit/UIKit.h>
 #import "ComposeViewController.h"
 #import "Post.h"
+#import "DetailViewController.h"
 
 @interface TimelineViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -102,16 +103,23 @@
 
 
 #pragma mark - Navigation
-/*
+
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+        UITableViewCell *tappedCell = sender;
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
+        Post *post = self.posts[indexPath.row];
+        
+        DetailViewController *detailsViewController = [segue destinationViewController];
+        detailsViewController.post= post;
+      //  NSLog(@"Tapping on a movie!");
     
 //
 //    }
 //
 }
 
-*/
+
 @end

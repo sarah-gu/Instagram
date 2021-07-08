@@ -22,6 +22,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
+- (IBAction)onTap:(id)sender {
+    [self.view endEditing:true];
+}
 - (IBAction)registerUser:(id)sender {
     
     [self checkEmptyFields];

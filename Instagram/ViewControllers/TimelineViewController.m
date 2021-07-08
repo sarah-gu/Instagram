@@ -108,6 +108,8 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    
+    if ([@"detailSegue"  isEqual: segue.identifier]){
         UITableViewCell *tappedCell = sender;
         NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
         Post *post = self.posts[indexPath.row];
@@ -115,6 +117,7 @@
         DetailViewController *detailsViewController = [segue destinationViewController];
         detailsViewController.post= post;
       //  NSLog(@"Tapping on a movie!");
+    }
     
 //
 //    }

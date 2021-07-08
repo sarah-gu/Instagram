@@ -13,7 +13,8 @@
 
 @interface ComposeViewController ()<UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
-@property (weak, nonatomic) IBOutlet UITextField *captionToPost;
+@property (weak, nonatomic) IBOutlet UITextView *captionToPost;
+
 @property (weak, nonatomic) IBOutlet UIImageView *imageToPost;
 
 

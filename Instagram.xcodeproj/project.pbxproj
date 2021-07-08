@@ -120,6 +120,15 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		826A14402696AA1200A2E323 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				826A143D269688A000A2E323 /* Post.h */,
+				826A143E269688A000A2E323 /* Post.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		828669EF2694A47800C28F9F = {
 			isa = PBXGroup;
 			children = (
@@ -145,6 +154,7 @@
 		828669FA2694A47800C28F9F /* Instagram */ = {
 			isa = PBXGroup;
 			children = (
+				826A14402696AA1200A2E323 /* Models */,
 				826A14362696147600A2E323 /* Views */,
 				82866A30269548EB00C28F9F /* ViewControllers */,
 				828669FB2694A47800C28F9F /* AppDelegate.h */,
@@ -158,8 +168,6 @@
 				82866A092694A47900C28F9F /* LaunchScreen.storyboard */,
 				82866A0C2694A47900C28F9F /* Info.plist */,
 				82866A0D2694A47900C28F9F /* main.m */,
-				826A143D269688A000A2E323 /* Post.h */,
-				826A143E269688A000A2E323 /* Post.m */,
 			);
 			path = Instagram;
 			sourceTree = "<group>";

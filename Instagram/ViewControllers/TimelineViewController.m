@@ -13,6 +13,7 @@
 #import "PostCell.h"
 #import <UIKit/UIKit.h>
 #import "ComposeViewController.h"
+#import "Post.h"
 
 @interface TimelineViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -54,11 +55,14 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     PostCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PostCell" ];
+    NSLog(@"%@", self.posts);
+    [cell setPost:self.posts[indexPath.row]];
     
-    cell.postCaption.text = (self.posts[indexPath.row])[@"text"];
+//    cell.postCaption.text = (self.posts[indexPath.row])[@"text"];
+//    
+//    PFUser *user =( self.posts[indexPath.row])[@"user"];
+//    cell.postUser.text = user.username;
     
-    PFUser *user =( self.posts[indexPath.row])[@"user"];
-    cell.postUser.text = user.username;
     
     return cell;
     
@@ -69,23 +73,25 @@
 }
 
 - (void) queryPosts{
-    // construct query
-    PFQuery *query = [PFQuery queryWithClassName:@"Instagram_Posts"];
-    [query includeKey:@"user"];
-    [query includeKey:@"img"];
-    [query orderByDescending:@"createdAt"];
-    query.limit = 20;
+
+    PFQuery *postQuery = [Post query];
+    [postQuery orderByDescending:@"createdAt"];
+    [postQuery includeKey:@"author"];
+    postQuery.limit = 20;
 
     // fetch data asynchronously
-    [query findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
-        if (posts != nil) {
+    [postQuery findObjectsInBackgroundWithBlock:^(NSArray<Post *> * _Nullable posts, NSError * _Nullable error) {
+        if (posts) {
+            // do something with the data fetched
             self.posts = posts;
-            // do something with the array of object returned by the call
-        } else {
-            NSLog(@"%@", error.localizedDescription);
+            [self.tableView reloadData];
+        }
+        else {
+            // handle error
         }
     }];
-    [self.tableView reloadData];
+    
+    [self.refreshControl endRefreshing];
 }
 
 - (IBAction)newPost:(id)sender {

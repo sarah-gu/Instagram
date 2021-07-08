@@ -9,10 +9,12 @@
 #import "Parse/Parse.h"
 #import "SceneDelegate.h"
 #import "TimelineViewController.h"
+#import "Post.h"
 
 @interface ComposeViewController ()<UIImagePickerControllerDelegate, UINavigationControllerDelegate>
-@property (weak, nonatomic) IBOutlet UILabel *captionToPost;
-@property (weak, nonatomic) IBOutlet UIButton *imageToPost;
+
+@property (weak, nonatomic) IBOutlet UITextField *captionToPost;
+@property (weak, nonatomic) IBOutlet UIImageView *imageToPost;
 
 
 @end
@@ -27,23 +29,7 @@
 
     [self dismissViewControllerAnimated:YES completion:nil];
 }
-
-- (IBAction)onSend:(id)sender {
-    PFObject *chatMessage = [PFObject objectWithClassName:@"Instagram_Posts"];
-    chatMessage[@"text"] = self.captionToPost.text;
-    chatMessage[@"user"] = PFUser.currentUser;
-    chatMessage[@"img"] = self.imageToPost;
-    [chatMessage saveInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
-        if (succeeded) {
-            NSLog(@"The message was saved!");
-            [self returnToTimeline:self];
-        } else {
-            NSLog(@"Problem saving message: %@", error.localizedDescription);
-        }
-    }];
-
-}
-- (IBAction)takeImage:(id)sender {
+- (IBAction)uploadImage:(id)sender {
     UIImagePickerController *imagePickerVC = [UIImagePickerController new];
     imagePickerVC.delegate = self;
     imagePickerVC.allowsEditing = YES;
@@ -58,8 +44,36 @@
     }
 
     [self presentViewController:imagePickerVC animated:YES completion:nil];
+    
 }
 
+- (IBAction)onSend:(id)sender {
+//    PFObject *chatMessage = [PFObject objectWithClassName:@"Instagram_Posts"];
+//    chatMessage[@"text"] = self.captionToPost.text;
+//    chatMessage[@"user"] = PFUser.currentUser;
+//    chatMessage[@"img"] = self.imageToPost;
+//    [chatMessage saveInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
+//        if (succeeded) {
+//            NSLog(@"The message was saved!");
+//            [self returnToTimeline:self];
+//        } else {
+//            NSLog(@"Problem saving message: %@", error.localizedDescription);
+//        }
+//    }];
+    
+    UIImage *imageToPost = self.imageToPost.image;
+        NSString *captionToPost = self.captionToPost.text;
+        
+        [Post postUserImage:imageToPost withCaption:captionToPost withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+            if (succeeded){
+                NSLog(@"posted image successfuly");
+                [self dismissViewControllerAnimated:true completion:nil];
+            }
+            else{
+                NSLog(@"Error posting: %@", error.localizedDescription);
+            }
+        }];
+}
 
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
@@ -68,8 +82,11 @@
     UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
     UIImage *editedImage = info[UIImagePickerControllerEditedImage];
 
+    
     // Do something with the images (based on your use case)
     
+    [self.imageToPost setImage:editedImage];
+   //self.imageToPost.image = editedImage;
     
     // Dismiss UIImagePickerController to go back to your original view controller
     [self dismissViewControllerAnimated:YES completion:nil];

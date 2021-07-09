@@ -15,10 +15,15 @@
 #import "ComposeViewController.h"
 #import "Post.h"
 #import "DetailViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface TimelineViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSArray *posts;
+@property (weak, nonatomic) IBOutlet UIImageView *storyImg1;
+@property (weak, nonatomic) IBOutlet UIImageView *storyImg2;
+@property (weak, nonatomic) IBOutlet UIImageView *storyImg3;
+@property (weak, nonatomic) IBOutlet UIImageView *storyImg4;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @end
 
@@ -34,6 +39,17 @@
     self.refreshControl = [[UIRefreshControl alloc] init]; //instantiate the refreshControl
     [self.refreshControl addTarget:self action:@selector(queryPosts) forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:self.refreshControl];
+    
+    self.storyImg1.layer.cornerRadius = 18;
+    self.storyImg1.clipsToBounds = YES;
+    self.storyImg2.layer.cornerRadius = 18;
+    self.storyImg2.clipsToBounds = YES;
+    self.storyImg3.layer.cornerRadius = 18;
+    self.storyImg3.clipsToBounds = YES;
+    self.storyImg4.layer.cornerRadius = 18;
+    self.storyImg4.clipsToBounds = YES;
+
+
 }
 
 
@@ -54,15 +70,13 @@
 //    }
 }
 
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     PostCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PostCell" ];
     NSLog(@"%@", self.posts);
+    cell.postPFP.layer.cornerRadius = 20;
+    cell.postPFP.clipsToBounds = YES;
     [cell setPost:self.posts[indexPath.row]];
-    
-//    cell.postCaption.text = (self.posts[indexPath.row])[@"text"];
-//    
-//    PFUser *user =( self.posts[indexPath.row])[@"user"];
-//    cell.postUser.text = user.username;
     
     
     return cell;
@@ -72,6 +86,8 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.posts.count;
 }
+
+
 
 - (void) queryPosts{
 

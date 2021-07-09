@@ -15,12 +15,14 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) IBOutlet PFImageView *photoImageView;
 @property (strong, nonatomic) Post *post;
 
+@property (weak, nonatomic) IBOutlet UIImageView *postPFP;
 @property (weak, nonatomic) IBOutlet UILabel *postUser;
 @property (weak, nonatomic) IBOutlet UILabel *postCaption;
 @property (weak, nonatomic) IBOutlet UIButton *likeButton;
 @property (weak, nonatomic) IBOutlet UIButton *retweetButton;
 @property (weak, nonatomic) IBOutlet UILabel *likeCount;
 @property (weak, nonatomic) IBOutlet UILabel *retweetCount;
+@property (weak, nonatomic) IBOutlet UILabel *timePosted;
 
 @end
 

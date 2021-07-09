@@ -27,12 +27,13 @@
     
     Post *newPost = [Post new];
     newPost.image = [self getPFFileFromImage:image];
+    
     newPost.author = [PFUser currentUser];
     newPost.caption = caption;
     newPost.likeCount = @(0);
     newPost.commentCount = @(0);
     
-    
+    //[self resizeImage:newPost.image withSize:@10];
     [newPost saveInBackgroundWithBlock: completion];
 }
 
@@ -52,4 +53,17 @@
  //   return [PFFileObject fileWithName:@"image.png" data:imageData];
 }
 
+- (UIImage *)resizeImage:(UIImage *)image withSize:(CGSize)size {
+    UIImageView *resizeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
+    
+    resizeImageView.contentMode = UIViewContentModeScaleAspectFill;
+    resizeImageView.image = image;
+    
+    UIGraphicsBeginImageContext(size);
+    [resizeImageView.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return newImage;
+}
 @end

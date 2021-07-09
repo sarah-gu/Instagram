@@ -49,31 +49,19 @@
 }
 
 - (IBAction)onSend:(id)sender {
-//    PFObject *chatMessage = [PFObject objectWithClassName:@"Instagram_Posts"];
-//    chatMessage[@"text"] = self.captionToPost.text;
-//    chatMessage[@"user"] = PFUser.currentUser;
-//    chatMessage[@"img"] = self.imageToPost;
-//    [chatMessage saveInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
-//        if (succeeded) {
-//            NSLog(@"The message was saved!");
-//            [self returnToTimeline:self];
-//        } else {
-//            NSLog(@"Problem saving message: %@", error.localizedDescription);
-//        }
-//    }];
-    
+
     UIImage *imageToPost = self.imageToPost.image;
-        NSString *captionToPost = self.captionToPost.text;
-        
-        [Post postUserImage:imageToPost withCaption:captionToPost withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
-            if (succeeded){
-                NSLog(@"posted image successfuly");
-                [self dismissViewControllerAnimated:true completion:nil];
-            }
-            else{
-                NSLog(@"Error posting: %@", error.localizedDescription);
-            }
-        }];
+    NSString *captionToPost = self.captionToPost.text;
+    
+    [Post postUserImage:imageToPost withCaption:captionToPost withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+        if (succeeded){
+            NSLog(@"posted image successfuly");
+            [self dismissViewControllerAnimated:true completion:nil];
+        }
+        else{
+            NSLog(@"Error posting: %@", error.localizedDescription);
+        }
+    }];
 }
 
 

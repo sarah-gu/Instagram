@@ -40,8 +40,8 @@ The following **additional** features are implemented:
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
-1.
-2.
+1. I'd like to discuss further how to implement commenting and keeping track of who likes a post. 
+2. Also, I want to discuss how I would be able to upload and store profile pictures for each user. 
 
 ## Video Walkthrough
 
@@ -50,7 +50,7 @@ Here's a walkthrough of implemented user stories:
 ![video](https://github.com/sarah-gu/Instagram/blob/main/gif1.gif)
 
 Heres additional gif to show features
-![gif] (https://github.com/sarah-gu/Instagram/blob/main/gif2.gif)
+![gif](https://github.com/sarah-gu/Instagram/blob/main/gif2.gif)
 
 GIF created with [Kap](https://getkap.co/).
 
